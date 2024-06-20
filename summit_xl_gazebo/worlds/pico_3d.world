@@ -1,0 +1,76 @@
+<?xml version='1.0' ?>
+<sdf version='1.4'>
+<world name='default'>
+<gravity>0 0 0</gravity>
+<scene>
+<shadows> false </shadows>
+<ambient>0.4 0.4 0.4 1.0</ambient>
+<background>0.290 0.337 0.560 0.7</background>
+<grid>false</grid>
+<sky>
+<time>17</time>
+<sunrise>15</sunrise>
+<sunset>18</sunset>
+<clouds>
+<humidity>0.01</humidity>
+</clouds>
+</sky>
+</scene>
+<include>
+<uri>model://sun</uri>
+</include>
+<model name='heightmap'>
+<static>true</static>
+<link name='link'>
+<collision name='collision'>
+<geometry>
+<heightmap>
+<uri>file://pico/pico_mini_dem_4.tif</uri>
+<size>2808 1270 242</size>
+<pos> 0 0 0 0 0 0</pos>
+</heightmap>
+</geometry>
+</collision>
+<visual name='visual_abcedf'>
+ <geometry>
+<heightmap> 
+  <texture> 
+   <diffuse>file://rio_tinto/output_image2.png</diffuse>
+   <normal>file://rio_tinto/output_image2.png </normal> 
+  <size>1574 </size>
+ </texture>
+<texture>
+ <texture>
+      <diffuse>file://volcano/Sand_Albedo.png</diffuse>
+      <normal>file://volcano/Sand_Normal.png</normal>
+      <size>10</size>
+    </texture>
+    <texture>
+      <diffuse>file://volcano/Grass_Albedo.png</diffuse>
+      <normal>file://volcano/Grass_Normal.png</normal>
+      <size>10</size>
+    </texture>
+    <texture>
+      <diffuse>file://volcano/Rock_Albedo.png</diffuse>
+      <normal>file://volcano/Rock_Normal.png</normal>
+      <size>10</size>
+    </texture>
+</texture>
+<blend>
+<min_height>2</min_height>
+<fade_dist>0.1</fade_dist>
+</blend>
+<blend>
+<min_height>2</min_height>
+<fade_dist>0.1</fade_dist>
+</blend>
+<uri>file://pico/pico_mini_dem_4.tif</uri>
+<size>2808 1270 242</size>
+<pos> 0 0 0 0 0 0</pos>
+</heightmap>
+</geometry>
+</visual>
+</link>
+</model>
+</world>
+</sdf>

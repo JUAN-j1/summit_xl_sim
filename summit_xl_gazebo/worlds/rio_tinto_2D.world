@@ -1,0 +1,65 @@
+<sdf version='1.6'>
+<world name='default'> 
+<scene>
+<shadows> false </shadows>
+<ambient>0.4 0.4 0.4 1.0</ambient>
+<background>0.290 0.337 0.560 0.7</background>
+<grid>false</grid>
+<sky>
+<time>17</time>
+<sunrise>15</sunrise>
+<sunset>18</sunset>
+<clouds>
+<humidity>0.01</humidity>
+</clouds>
+</sky>
+</scene>
+<physics type='ode'>
+<gravity>0 0 -9.8</gravity>
+<scene>
+<shadows> false </shadows>
+<ambient>0.4 0.4 0.4 1.0</ambient>
+<background>0.290 0.337 0.560 0.7</background>
+<grid>false</grid>
+<sky>
+<time>17</time>
+<sunrise>15</sunrise>
+<sunset>18</sunset>
+<clouds>
+<humidity>0.01</humidity>
+</clouds>
+</sky>
+</scene>
+<ode>
+<solver>
+<!--type>quick</type>
+<dt>0.001</dt>
+<iters>40</iters>
+<sor>1.0</sor -->
+<!-- type>quick</type>
+<dt>0.01</dt>
+<iters>20</iters>
+<sor>1.0</sor -->
+<type>quick</type>
+<!--dt>0.001</dt-->
+<iters>20</iters>
+<sor>1.0</sor>
+</solver>
+<constraints>
+<cfm>0.0</cfm>
+<erp>0.2</erp>
+<contact_max_correcting_vel>100.0</contact_max_correcting_vel>
+<contact_surface_layer>0.0</contact_surface_layer>
+</constraints>
+</ode>
+<max_step_size>0.001</max_step_size>
+</physics>
+<include>
+<uri>model://sun</uri>
+</include>
+<include>
+<uri>model://map_satellite_rio_tinto</uri>
+<pose>  -47.000000 -167.000000 0.000000 0 0 0</pose>
+</include>
+</world>
+</sdf>

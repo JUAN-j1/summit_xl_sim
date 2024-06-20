@@ -6,8 +6,9 @@
 	<arg name="gazebo_gui" default="true"/>
 	<arg name="launch_rviz" default="false"/>
 	<arg name="world" default="$(find summit_xl_gazebo)/worlds/summit_xl.world"/>
+        <!--arg name="world" default="$(find gazebo_terrain_tutorial)/worlds/terrain_1.world"/-->
 	<!-- located in summit_xl_gazebo/worlds -->
-	<arg name="file_rviz" default="summitxl_a"/>
+	<arg name="file_rviz" default="summitxl_multi"/>
 	<!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
 		<arg name="world_name" value="$(arg world)"/>
@@ -21,6 +22,6 @@
 	<!-- launch rviz -->
 	<node if="$(arg launch_rviz)" name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find summit_xl_gazebo)/rviz/$(arg file_rviz).rviz"/>
 
-
+	
 
 </launch>

@@ -1,0 +1,79 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="default">
+   <gravity>0 0 0</gravity>
+
+
+    
+   <scene>
+   <shadows> false </shadows>
+      <ambient>0.4 0.4 0.4 1.0</ambient>
+      <background>0.290 0.337 0.560 0.7</background>
+      <grid>false</grid>
+      <sky>
+        <time>17</time>
+        <sunrise>15</sunrise>
+        <sunset>18</sunset>
+        <clouds>
+          <humidity>0.01</humidity>
+        </clouds>
+      </sky>
+   </scene>
+   
+   
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <model name="heightmap">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <heightmap>
+              <uri>file://volcano/volcano43.dem</uri>
+              <size>150 150 50</size>
+              <pos> 0 0 -50</pos>
+            </heightmap>
+          </geometry>
+        </collision>
+
+
+  <visual name="visual">
+        <geometry>
+          <heightmap>
+          <use_terrain_paging>false</use_terrain_paging>
+            <texture>
+              <diffuse>file://volcano/Sand_Albedo.png</diffuse>
+              <normal>file://volcano/Sand_Normal.png</normal>
+              <size>10</size>
+            </texture>
+            <texture>
+              <diffuse>file://volcano/Grass_Albedo.png</diffuse>
+              <normal>file://volcano/Grass_Normal.png</normal>
+              <size>10</size>
+            </texture>
+            <texture>
+              <diffuse>file://volcano/Rock_Albedo.png</diffuse>
+              <normal>file://volcano/Rock_Normal.png</normal>
+              <size>10</size>
+            </texture>
+            <blend>
+              <min_height>6</min_height>
+              <fade_dist>6</fade_dist>
+            </blend>
+            <blend>
+              <min_height>7</min_height>
+              <fade_dist>70</fade_dist>
+            </blend>
+              <uri>file://volcano/volcano43.dem</uri>
+              <size>150 150 50</size>
+              <pos>0 0 -50 </pos>
+            </heightmap>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+  </world>
+</sdf>

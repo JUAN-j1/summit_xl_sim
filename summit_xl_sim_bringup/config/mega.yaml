@@ -1,0 +1,13 @@
+# parameters.yaml
+x: 133
+y: -293
+z: 0
+yaw: 0
+pitch: 0
+roll: 0
+frame_id: robot_map
+child_frame_id: robot_odom
+period_in_ms: 100
+
+
+

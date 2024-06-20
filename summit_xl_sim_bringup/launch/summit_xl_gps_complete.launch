@@ -5,30 +5,29 @@
 	<!-- GPS default position of Robotnik at Fuente del Jarro-->
 
 	<arg name="launch_rviz" default="true"/>
-	<arg name="gazebo_world" default="$(find summit_xl_gazebo)/worlds/volcano_3D.world"/>
+	<!--arg name="gazebo_world" default="$(find gazebo_terrain_tutorial)/worlds/terrain_1.world"/-->
+	<arg name="gazebo_world" default="$(find summit_xl_gazebo)/worlds/rio_tinto_3D.world"/>
+	<!--arg name="gazebo_world" default="$(find summit_xl_gazebo)/worlds/rio_tinto_2D.world"/-->
 	<arg name="gazebo_gui" default="true"/>
 	<arg name="omni_drive" default="false"/>
 	<arg name="default_xacro" default="summit_xl_std.urdf.xacro"/>
 	<arg if="$(arg omni_drive)" name="ros_planar_move_plugin" value="false"/>
-	<arg unless="$(arg omni_drive)" name="ros_planar_move_plugin" default="false"/>
-	<arg name="ros_planar_move_plugin_force_based" default="false"/>
+	<arg unless="$(arg omni_drive)" name="ros_planar_move_plugin" default="true"/>
+	<arg name="ros_planar_move_plugin_force_based" default="false"/> <!--false-->
 	<arg name="launch_advanced_simulation" default="false"/> <!-- Just for internal use -->
 	<arg name="use_gpu_for_simulation" default="$(optenv USE_GPU_FOR_SIMULATION true)"/>
 	<arg name="launch_rosbridge" default="$(optenv LAUNCH_ROSBRIDGE false)" />
 	<arg name="rosbridge_port" default="$(optenv ROSBRIDGE_PORT 9090)" />
-    <arg name="default_xacro_package" default="summit_xl_description"/>
 
 	<!-- arguments robot a -->
 	<arg name="id_robot_a" default="robot"/>
 	<arg name="launch_robot_a" default="true"/>
-	<arg name="xacro_robot_package_a" default="$(arg default_xacro_package)"/>
 	<arg name="xacro_robot_a" default="$(arg default_xacro)"/>
-
-	<arg name="map_file_a" default="willow_garage/willow_garage.yaml"/>
+	<arg name="map_file_a" default="empty/map_empty.yaml"/>
 	<arg name="gmapping_robot_a" default="false"/>
 	<arg name="move_base_robot_a" default="true"/>
 	<arg name="ekf_localization_robot_a" default="false"/>
-	<arg name="amcl_and_mapserver_a" default="true"/>
+	<arg name="amcl_and_mapserver_a" default="false"/>
 	<arg name="launch_pad_a" default="false"/>
 	<arg name="gps_latitude_robot_a" default="39.5080331"/>
 	<arg name="gps_longitude_robot_a" default="-0.4619816"/>
@@ -41,12 +40,11 @@
 
 	<!-- arguments robot b -->
 	<arg name="id_robot_b" default="robot_b"/>
-	<arg name="launch_robot_b" default="false"/>
-	<arg name="xacro_robot_package_b" default="$(arg default_xacro_package)"/>
+	<arg name="launch_robot_b" default="true"/>
 	<arg name="xacro_robot_b" default="$(arg default_xacro)"/>
-	<arg name="map_file_b" default="willow_garage/willow_garage.yaml"/>
+	<arg name="map_file_b" default="empty/map_empty.yaml"/>
 	<arg name="gmapping_robot_b" default="false"/>
-	<arg name="move_base_robot_b" default="false"/>
+	<arg name="move_base_robot_b" default="true"/>
 	<arg name="ekf_localization_robot_b" default="false"/>
 	<arg name="amcl_and_mapserver_b" default="false"/>
 	<arg name="launch_pad_b" default="false"/>
@@ -61,12 +59,11 @@
 
 	<!-- arguments robot c -->
 	<arg name="id_robot_c" default="robot_c"/>
-	<arg name="launch_robot_c" default="false"/>
-	<arg name="xacro_robot_package_c" default="$(arg default_xacro_package)"/>
+	<arg name="launch_robot_c" default="true"/>
 	<arg name="xacro_robot_c" default="$(arg default_xacro)"/>
-	<arg name="map_file_c" default="willow_garage/willow_garage.yaml"/>
+	<arg name="map_file_c" default="empty/map_empty.yaml"/>
 	<arg name="gmapping_robot_c" default="false"/>
-	<arg name="move_base_robot_c" default="false"/>
+	<arg name="move_base_robot_c" default="true"/>
 	<arg name="ekf_localization_robot_c" default="false"/>
 	<arg name="amcl_and_mapserver_c" default="false"/>
 	<arg name="launch_pad_c" default="false"/>
@@ -79,14 +76,13 @@
 	<arg name="arm_model_c" default="vx300s"/>
     <arg name="launch_moveit_c" default="false"/>
     
-    <!-- arguments robot d -->
+    	<!-- arguments robot d -->
 	<arg name="id_robot_d" default="robot_d"/>
-	<arg name="launch_robot_d" default="false"/>
-	<arg name="xacro_robot_package_d" default="$(arg default_xacro_package)"/>
+	<arg name="launch_robot_d" default="true"/>
 	<arg name="xacro_robot_d" default="$(arg default_xacro)"/>
-	<arg name="map_file_d" default="willow_garage/willow_garage.yaml"/>
+	<arg name="map_file_d" default="empty/map_empty.yaml"/>
 	<arg name="gmapping_robot_d" default="false"/>
-	<arg name="move_base_robot_d" default="false"/>
+	<arg name="move_base_robot_d" default="true"/>
 	<arg name="ekf_localization_robot_d" default="false"/>
 	<arg name="amcl_and_mapserver_d" default="false"/>
 	<arg name="launch_pad_d" default="false"/>
@@ -98,7 +94,7 @@
 	<arg name="arm_manufacturer_d" default="trossen"/>
 	<arg name="arm_model_d" default="vx300s"/>
     <arg name="launch_moveit_d" default="false"/>
-
+    	
 	<include file="$(find summit_xl_gazebo)/launch/summit_xl_gazebo.launch">
 		<!-- general args -->
 		<arg name="launch_rviz" value="$(arg launch_rviz)"/>
@@ -113,7 +109,6 @@
 		<!-- robot_a args -->
 		<arg name="id_robot_a" value="$(arg id_robot_a)"/>
 		<arg name="launch_robot_a" value="$(arg launch_robot_a)"/>
-		<arg name="xacro_robot_package_a" value="$(arg xacro_robot_package_a)"/>
 		<arg name="xacro_robot_a" value="$(arg xacro_robot_a)"/>
 		<arg name="map_file_a" value="$(arg map_file_a)"/>
 		<arg name="gmapping_robot_a" value="$(arg gmapping_robot_a)"/>
@@ -132,7 +127,6 @@
 		<!-- robot_b args -->
 		<arg name="id_robot_b" value="$(arg id_robot_b)"/>
 		<arg name="launch_robot_b" value="$(arg launch_robot_b)"/>
-		<arg name="xacro_robot_package_b" value="$(arg xacro_robot_package_b)"/>
 		<arg name="xacro_robot_b" value="$(arg xacro_robot_b)"/>
 		<arg name="gmapping_robot_b" value="$(arg gmapping_robot_b)"/>
 		<arg name="move_base_robot_b" value="$(arg move_base_robot_b)"/>
@@ -151,7 +145,6 @@
 		<!-- robot_c args -->
 		<arg name="id_robot_c" value="$(arg id_robot_c)"/>
 		<arg name="launch_robot_c" value="$(arg launch_robot_c)"/>
-		<arg name="xacro_robot_package_c" value="$(arg xacro_robot_package_c)"/>
 		<arg name="xacro_robot_c" value="$(arg xacro_robot_c)"/>
 		<arg name="gmapping_robot_c" value="$(arg gmapping_robot_c)"/>
 		<arg name="move_base_robot_c" value="$(arg move_base_robot_c)"/>
@@ -170,7 +163,6 @@
 		<!-- robot_d args -->
 		<arg name="id_robot_d" value="$(arg id_robot_d)"/>
 		<arg name="launch_robot_d" value="$(arg launch_robot_d)"/>
-		<arg name="xacro_robot_package_d" value="$(arg xacro_robot_package_d)"/>
 		<arg name="xacro_robot_d" value="$(arg xacro_robot_d)"/>
 		<arg name="gmapping_robot_d" value="$(arg gmapping_robot_d)"/>
 		<arg name="move_base_robot_d" value="$(arg move_base_robot_d)"/>
@@ -181,7 +173,7 @@
 		<arg name="gps_latitude_robot_d" value="$(arg gps_latitude_robot_d)"/>
 		<arg name="gps_longitude_robot_d" value="$(arg gps_longitude_robot_d)"/>
 		<arg name="has_pantilt_camera_d" value="$(arg has_pantilt_camera_d)"/>
-		<!-- robot_c arm args -->
+		<!-- robot_d arm args -->
 		<arg name="launch_arm_d" value="$(arg launch_arm_d)"/>
 		<arg name="arm_manufacturer_d" value="$(arg arm_manufacturer_d)"/>
 		<arg name="arm_model_d" value="$(arg arm_model_d)"/>

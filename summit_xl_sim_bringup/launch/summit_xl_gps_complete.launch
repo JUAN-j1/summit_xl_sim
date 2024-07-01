@@ -3,10 +3,26 @@
 
 	<!-- arg to config the launch file-->
 	<!-- GPS default position of Robotnik at Fuente del Jarro-->
+	
+	<arg name="x_init_pose_a" default="0.0000" />    
+	<arg name="y_init_pose_a" default="0.0000" />
+	<arg name="z_init_pose_a" default="0.0000" />
+
+	<arg name="x_init_pose_b" default="-4.0000" />
+	<arg name="y_init_pose_b" default="0.0000" />
+	<arg name="z_init_pose_b" default="0.0000" />
+
+	<arg name="x_init_pose_c" default="-8.0000" />
+	<arg name="y_init_pose_c" default="0.0000" />
+	<arg name="z_init_pose_c" default="0.0000" />
+
+	<arg name="x_init_pose_d" default="-12.0000" />
+	<arg name="y_init_pose_d" default="0.0000" />
+	<arg name="z_init_pose_d" default="0.0000" />
 
 	<arg name="launch_rviz" default="true"/>
 	<!--arg name="gazebo_world" default="$(find gazebo_terrain_tutorial)/worlds/terrain_1.world"/-->
-	<arg name="gazebo_world" default="$(find summit_xl_gazebo)/worlds/rio_tinto_3D.world"/>
+	<arg name="gazebo_world" default="$(find summit_xl_gazebo)/worlds/volcano_3D.world"/>
 	<!--arg name="gazebo_world" default="$(find summit_xl_gazebo)/worlds/rio_tinto_2D.world"/-->
 	<arg name="gazebo_gui" default="true"/>
 	<arg name="omni_drive" default="false"/>
@@ -96,6 +112,23 @@
     <arg name="launch_moveit_d" default="false"/>
     	
 	<include file="$(find summit_xl_gazebo)/launch/summit_xl_gazebo.launch">
+	
+		<arg name="x_init_pose_robot_a" value="$(arg x_init_pose_a)" />    
+		<arg name="y_init_pose_robot_a" value="$(arg y_init_pose_a)" />
+		<arg name="z_init_pose_robot_a" value="$(arg z_init_pose_a)" />
+		
+		<arg name="x_init_pose_robot_b" value="$(arg x_init_pose_b)" />
+		<arg name="y_init_pose_robot_b" value="$(arg y_init_pose_b)" />
+		<arg name="z_init_pose_robot_b" value="$(arg z_init_pose_b)" />
+		
+		<arg name="x_init_pose_robot_c" value="$(arg x_init_pose_c)" />
+		<arg name="y_init_pose_robot_c" value="$(arg y_init_pose_c)" />
+		<arg name="z_init_pose_robot_c" value="$(arg z_init_pose_c)" />
+		
+		<arg name="x_init_pose_robot_d" value="$(arg x_init_pose_d)" />
+		<arg name="y_init_pose_robot_d" value="$(arg y_init_pose_d)" />
+		<arg name="z_init_pose_robot_d" value="$(arg z_init_pose_d)" />
+	
 		<!-- general args -->
 		<arg name="launch_rviz" value="$(arg launch_rviz)"/>
 		<arg name="gazebo_world" value="$(arg gazebo_world)"/>

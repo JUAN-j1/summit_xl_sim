@@ -1,0 +1,37 @@
+<?xml version='1.0'?> 
+<launch> 
+<include file='$(find summit_xl_sim_bringup)/launch/summit_xl_gps_complete.launch'> 
+<arg name='gazebo_world' value='$(find summit_xl_gazebo)/worlds/timanfaya_3D.world'/> 
+
+<arg name='x_init_pose_a' value='-65.000000 ' /> 
+<arg name='y_init_pose_a' value='349.000000 ' /> 
+<arg name='z_init_pose_a' value='0.000000 ' /> 
+
+<arg name='x_init_pose_b' value='-69.000000 ' /> 
+<arg name='y_init_pose_b' value='349.000000 ' /> 
+<arg name='z_init_pose_b' value='0.000000 ' /> 
+
+<arg name='x_init_pose_c' value='-73.000000 ' /> 
+<arg name='y_init_pose_c' value='349.000000 ' /> 
+<arg name='z_init_pose_c' value='0.000000 ' /> 
+
+<arg name='x_init_pose_d' value='-77.000000 ' /> 
+<arg name='y_init_pose_d' value='349.000000 ' /> 
+<arg name='z_init_pose_d' value='0.000000 ' /> 
+
+</include> 
+<include file='$(find summit_xl_localization)/launch/map_server.launch'> 
+<arg name='map_file' value='real/unitX_map.yaml'/> 
+</include> 
+<include file='$(find summit_xl_localization)/launch/navsat_transform_node.launch'> 
+</include> 
+<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster'  args='65.000000 -349.000000 0.000000 0 0 0  robot_map robot_odom 100' /> 
+<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster1'  args='65.000000 -349.000000 0.000000 0 0 0  robot_b_map robot_b_odom 100' /> 
+<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster2'  args='65.000000 -349.000000 0.000000 0 0 0  robot_c_map robot_c_odom 100' /> 
+<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster3'  args='65.000000 -349.000000 0.000000 0 0 0  robot_d_map robot_d_odom 100' /> 
+
+ <node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster4' args='0 0 0 0 0 0 robot_map robot_b_map 100' /> 
+<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster5' args='0 0 0 0 0 0 robot_map robot_c_map 100' /> 
+<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster6' args='0 0 0 0 0 0 robot_map robot_d_map 100' /> 
+
+	</launch> 
